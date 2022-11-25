@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 
 const BookingModal = ({ item, setItem }) => {
-  const { phone_name } = item;
+  const { phone_name, resale_price } = item;
   const { user } = useContext(AuthContext);
   const handleBooking = (event) => {
     event.preventDefault();
@@ -45,13 +45,15 @@ const BookingModal = ({ item, setItem }) => {
             <input
               name="name"
               type="text"
-              defaultValue={user.displayName}
+              disabled
+              defaultValue={user?.displayName}
               className="input w-full input-bordered"
             />
             <input
               name="email"
               type="email"
-              placeholder="Email Address"
+              disabled
+              defaultValue={user?.email}
               className="input w-full input-bordered"
             />
             <input
@@ -63,13 +65,15 @@ const BookingModal = ({ item, setItem }) => {
             <input
               name="item"
               type="text"
-              placeholder="Item Name"
+              disabled
+              defaultValue={phone_name}
               className="input w-full input-bordered"
             />
             <input
               name="price"
               type="text"
-              placeholder="Resale Price"
+              disabled
+              defaultValue={resale_price}
               className="input w-full input-bordered"
             />
             <input

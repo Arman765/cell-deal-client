@@ -14,7 +14,7 @@ const AllProducts = ({ product, setItem }) => {
     phone_name,
     verified,
   } = product;
-  console.log(product);
+
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
       <figure className="px-8 pt-8">
