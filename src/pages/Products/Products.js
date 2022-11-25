@@ -32,7 +32,7 @@ const Products = () => {
           ></AllProducts>
         ))}
       </div>
-      {item && <BookingModal item={item}></BookingModal>}
+      {item && <BookingModal item={item} setItem={setItem}></BookingModal>}
     </>
   );
 };
