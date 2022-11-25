@@ -1,6 +1,6 @@
 [
     {
-      "_id": 1,
+      
       "name": "Iphone",
       "picture":"https://i.ibb.co/vQF35ty/iphonecard1.png",
       "description":"The iPhone is a smartphone made by Apple that combines a computer, iPod, digital camera and cellular phone into one device with a touchscreen interface.",
@@ -51,7 +51,7 @@
       
     },
     {
-      "_id": 2,
+      
       "name": "Samsung",
       "picture":"https://i.ibb.co/sPrRMk5/samsungcard1.png",
       "description":"Samsung loyalists have long placed multitasking capabilities at the top of the list of reasons they prefer Galaxy devices. Galaxy devices leverage crisp,expansive screens.",
@@ -102,7 +102,7 @@
       
     },
     {
-      "_id": 3,
+      
       "name": "Oppo",
       "picture":"https://i.ibb.co/bNjz7RH/oppocard.png",
       "description":" Oppo smartphones offer superb value for money and are certainly fierce competition for those looking for handsets that are fast and powerful with excellent camera features.",

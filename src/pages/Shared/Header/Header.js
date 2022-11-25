@@ -1,35 +1,38 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 // import { AuthContext } from "../../../Contexts/AuthContext/AuthProvider";
 
 const Header = () => {
-  //   const { user, logOut } = useContext(AuthContext);
-  //   console.log(user);
+  const { user, logOut } = useContext(AuthContext);
+  console.log(user);
 
-  //   const handleLogOut = () => {
-  //     logOut()
-  //       .then(() => {})
-  //       .catch((error) => console.error(error));
-  //   };
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
 
   const menus = (
     <>
       <li>
         <Link to="/">Home</Link>
         <Link to="/blog">Blog</Link>
-        {/* {user ? (
+        {/* might delete letter */}
+
+        {user ? (
           <>
-            <Link to="/reviews">Reviews</Link>
-            <Link to="/addservice">Add Service</Link>
-            <Link onClick={handleLogOut} className=" btn-outline btn-success">
+            {/* <Link to="/reviews">Reviews</Link> */}
+            {/* <Link to="/addservice">Add Service</Link> */}
+            <Link onClick={handleLogOut} className="btn btn-outline ">
               Log Out
             </Link>
           </>
         ) : (
-          <Link className=" btn-outline btn-success" to="/login">
+          <Link className="btn btn-outline " to="/login">
             Login
           </Link>
-        )} */}
+        )}
       </li>
     </>
   );

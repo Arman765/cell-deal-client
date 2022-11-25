@@ -6,7 +6,11 @@ const Banner = () => {
     <section>
       <div className="hero  bg-purple-100 rounded-xl mt-10 mb-16 p-3">
         <div className="hero-content flex-col lg:flex-row-reverse">
-          <img src={img} className="w-1/2 rounded-lg -mb-32" alt="" />
+          <img
+            src={img}
+            className="hidden md:block w-1/2 rounded-lg -mb-32"
+            alt=""
+          />
           <div className="w-1/2">
             <h1 className="text-4xl font-bold">Cheap &</h1>
             <br></br>
