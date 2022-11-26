@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 
 const BookingModal = ({ item, setItem }) => {
-  const { phone_name, resale_price } = item;
+  const { phone_name, resale_price, picture } = item;
   const { user } = useContext(AuthContext);
   const handleBooking = (event) => {
     event.preventDefault();
@@ -22,6 +22,7 @@ const BookingModal = ({ item, setItem }) => {
       email,
       phone,
       location,
+      picture,
     };
     fetch("http://localhost:5000/bookings", {
       method: "POST",

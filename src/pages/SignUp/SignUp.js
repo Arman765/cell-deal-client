@@ -12,6 +12,7 @@ const SignUp = () => {
   } = useForm();
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const [signUpError, setSignUPError] = useState("");
+  // const [createdUserEmail, setCreatedUserEmail] = useState("");
 
   const navigate = useNavigate();
   const handleSignUp = (data) => {
@@ -25,13 +26,30 @@ const SignUp = () => {
         };
         updateUserProfile(userInfo)
           .then(() => {
-            navigate("/");
+            saveUser(data.name, data.email);
           })
           .catch((error) => console.log(error));
       })
       .catch((error) => {
         console.log(error);
         setSignUPError(error.message);
+      });
+  };
+
+  const saveUser = (name, email) => {
+    const user = { name, email };
+
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // setCreatedUserEmail(email);
+        navigate("/");
       });
   };
 
@@ -94,9 +112,15 @@ const SignUp = () => {
           </div>
           <input
             className="btn btn-accent w-full mt-4"
-            value="Sign Up"
+            value="Sign Up As A Customer"
             type="submit"
           />
+          <input
+            className="btn btn-accent w-full mt-4"
+            value="Sign Up As A Seller"
+            type="submit"
+          />
+
           {signUpError && <p className="text-red-600">{signUpError}</p>}
         </form>
         <p>
