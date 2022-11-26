@@ -24,13 +24,16 @@ const Products = () => {
         <div className="divider mb-16"></div>
       </div>
       <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-12">
-        {products.map((product) => (
-          <AllProducts
-            key={product.product_id}
-            product={product}
-            setItem={setItem}
-          ></AllProducts>
-        ))}
+        {products.map(
+          (product) =>
+            product.available === "true" && (
+              <AllProducts
+                key={product.product_id}
+                product={product}
+                setItem={setItem}
+              ></AllProducts>
+            )
+        )}
       </div>
       {item && <BookingModal item={item} setItem={setItem}></BookingModal>}
     </>

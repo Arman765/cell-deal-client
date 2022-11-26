@@ -1,17 +1,30 @@
+import { useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
+import Loading from "../../Shared/Loading/Loading";
 import Category from "./Category";
 
 const Categories = () => {
-  const [categories, setCategories] = useState([]);
+  // const [categories, setCategories] = useState([]);
 
-  useEffect(() => {
-    fetch("http://localhost:5000/categories")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setCategories(data);
-      });
-  }, []);
+  //alternate of fetching with useState and useEffect;
+  const { data: categories = [], isLoading } = useQuery({
+    queryKey: ["categories"],
+    queryFn: () =>
+      fetch("http://localhost:5000/categories").then((res) => res.json()),
+  });
+
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/categories")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       setCategories(data);
+  //     });
+  // }, []);
+
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
 
   return (
     <section className="mt-6">

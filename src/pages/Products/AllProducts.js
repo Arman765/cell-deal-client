@@ -27,14 +27,14 @@ const AllProducts = ({ product, setItem }) => {
             <span>Original Price : $</span>
             {original_price}
           </p>
-          <p>Original Price : ${resale_price}</p>
+          <p>Resale Price : ${resale_price}</p>
           <p>Used (Years) : {yearsUse}</p>
           <div className="flex items-center ">
             {verified === "true" ? <GoVerified></GoVerified> : ""}
             <p>Seller Name : {seller_name}</p>
           </div>
 
-          <p>Meet Up Location : {location}</p>
+          <p>Seller Location : {location}</p>
           <p>Posted At :{postTime}</p>
         </div>
         <div className="card-actions">
