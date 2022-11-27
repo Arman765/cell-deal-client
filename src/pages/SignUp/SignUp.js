@@ -49,7 +49,18 @@ const SignUp = () => {
       .then((res) => res.json())
       .then((data) => {
         // setCreatedUserEmail(email);
-        navigate("/");
+        getUserToken(email);
+      });
+  };
+
+  const getUserToken = (email) => {
+    fetch(`http://localhost:5000/jwt?email=${email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.accessToken) {
+          localStorage.setItem("accessToken", data.accessToken);
+          navigate("/");
+        }
       });
   };
 
@@ -112,15 +123,9 @@ const SignUp = () => {
           </div>
           <input
             className="btn btn-accent w-full mt-4"
-            value="Sign Up As A Customer"
+            value="Sign Up"
             type="submit"
           />
-          <input
-            className="btn btn-accent w-full mt-4"
-            value="Sign Up As A Seller"
-            type="submit"
-          />
-
           {signUpError && <p className="text-red-600">{signUpError}</p>}
         </form>
         <p>
