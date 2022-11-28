@@ -49,7 +49,9 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) => {
-          return fetch(`http://localhost:5000/category/${params.id}`);
+          return fetch(
+            `https://cell-deal-server.vercel.app/category/${params.id}`
+          );
         },
       },
     ],
@@ -102,7 +104,7 @@ export const router = createBrowserRouter([
         path: "/dashboard/payment/:id",
         element: <Payment></Payment>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/bookings/${params.id}`),
+          fetch(`https://cell-deal-server.vercel.app/bookings/${params.id}`),
       },
     ],
   },

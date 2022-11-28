@@ -6,7 +6,7 @@ import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 const MyProducts = () => {
   const { user } = useContext(AuthContext);
 
-  const url = `http://localhost:5000/products?email=${user?.email}`;
+  const url = `https://cell-deal-server.vercel.app/products?email=${user?.email}`;
 
   const { data: products = [], refetch } = useQuery({
     queryKey: ["products", user?.email],
@@ -27,7 +27,7 @@ const MyProducts = () => {
   });
 
   const handleVerify = (id) => {
-    fetch(`http://localhost:5000/products/${id}`, {
+    fetch(`https://cell-deal-server.vercel.app/products/${id}`, {
       method: "PUT",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,

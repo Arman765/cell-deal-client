@@ -46,7 +46,7 @@ const Login = () => {
 
         console.log(user);
         const newUser = { name: user.displayName, email: user.email };
-        fetch("http://localhost:5000/users", {
+        fetch("https://cell-deal-server.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

@@ -22,7 +22,9 @@ const AddProduct = () => {
   const { data: specialties, isLoading } = useQuery({
     queryKey: ["categoriesname"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/categoriesname");
+      const res = await fetch(
+        "https://cell-deal-server.vercel.app/categoriesname"
+      );
       const data = await res.json();
       return data;
     },
@@ -58,7 +60,7 @@ const AddProduct = () => {
           };
 
           // save doctor information to the database
-          fetch(`http://localhost:5000/products`, {
+          fetch(`https://cell-deal-server.vercel.app/products`, {
             method: "POST",
             headers: {
               "content-type": "application/json",

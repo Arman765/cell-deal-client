@@ -10,11 +10,13 @@ const Categories = () => {
   const { data: categories = [], isLoading } = useQuery({
     queryKey: ["categories"],
     queryFn: () =>
-      fetch("http://localhost:5000/categories").then((res) => res.json()),
+      fetch("https://cell-deal-server.vercel.app/categories").then((res) =>
+        res.json()
+      ),
   });
 
   // useEffect(() => {
-  //   fetch("http://localhost:5000/categories")
+  //   fetch("https://cell-deal-server.vercel.app/categories")
   //     .then((res) => res.json())
   //     .then((data) => {
   //       console.log(data);
