@@ -80,7 +80,7 @@ const SignUp = () => {
   };
 
   const saveSeller = (name, email) => {
-    const user = { name, email };
+    const user = { name, email, role: "seller" };
 
     fetch("http://localhost:5000/sellers", {
       method: "POST",
