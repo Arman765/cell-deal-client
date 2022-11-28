@@ -2,6 +2,12 @@
 
 Link -> https://cell-sale.web.app/
 
+Admin ---
+
+adminEmail: yes@sir.com
+
+adminPassword: 123456
+
 ### This website
 
 ### This website was created using html,css,react.js,mongodb,firebase.
