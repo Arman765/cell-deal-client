@@ -1,3 +1,4 @@
+import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -10,8 +11,10 @@ const Login = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
+
+  const googleProvider = new GoogleAuthProvider();
   const [loginError, setLoginError] = useState("");
-  const { login } = useContext(AuthContext);
+  const { login, googleSignIn } = useContext(AuthContext);
   const location = useLocation();
   const [loginUserEmail, setloginUserEmail] = useState("");
   const [token] = useToken(loginUserEmail);
@@ -32,6 +35,33 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error.message);
+        setLoginError(error.message);
+      });
+  };
+
+  const handleGoogleSignIn = () => {
+    googleSignIn(googleProvider)
+      .then((result) => {
+        const user = result.user;
+
+        console.log(user);
+        const newUser = { name: user.displayName, email: user.email };
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(newUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            setloginUserEmail(user.email);
+          });
+        // setloginUserEmail(user.email);
+        // navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.error(error);
         setLoginError(error.message);
       });
   };
@@ -101,7 +131,9 @@ const Login = () => {
           </Link>
         </p>
         <div className="divider">Or Sign in with</div>
-        <button className="btn btn-outline w-full">GOOGLE</button>
+        <button onClick={handleGoogleSignIn} className="btn btn-outline w-full">
+          GOOGLE
+        </button>
       </div>
     </div>
   );
